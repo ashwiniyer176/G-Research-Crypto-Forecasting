@@ -31,6 +31,12 @@ As historic cryptocurrency prices are not confidential this will be a forecastin
 
 ### Files
 `train.csv` - The training set <br>
+`example_test.csv` - An example of the data that will be delivered by the time series API.<br>
+
+`example_sample_submission.csv` - An example of the data that will be delivered by the time series API. The data is just copied from train.csv. <br>
+
+`asset_details.csv` - Provides the real name and of the cryptoasset for each Asset_ID and the weight each cryptoasset receives in the metric.<br>
+`supplemental_train.csv` - After the submission period is over this file's data will be replaced with cryptoasset prices from the submission period. In the Evaluation phase, the train, train supplement, and test set will be contiguous in time, apart from any missing data. The current copy, which is just filled approximately the right amount of data from train.csv is provided as a placeholder.<br>
 
 ### Columns
 `timestamp` - A timestamp for the minute covered by the row.<br>
@@ -43,15 +49,7 @@ As historic cryptocurrency prices are not confidential this will be a forecastin
 `Volume` - The number of cryptoasset units traded during the minute.<br>
 `VWAP` - The volume weighted average price for the minute.<br>
 `Target` - 15 minute residualized returns. See the 'Prediction and Evaluation' section of this notebook for details of how the target is calculated.<br>
-`example_test.csv` - An example of the data that will be delivered by the time series API.<br>
 
-`example_sample_submission.csv` - An example of the data that will be delivered by the time series API. The data is just copied from train.csv. <br>
-
-`asset_details.csv` - Provides the real name and of the cryptoasset for each Asset_ID and the weight each cryptoasset receives in the metric.<br>
-
-`gresearch_crypto` - An unoptimized version of the time series API files for offline work. You may need Python 3.7 and a Linux environment to run it without errors.<br>
-
-`supplemental_train.csv` - After the submission period is over this file's data will be replaced with cryptoasset prices from the submission period. In the Evaluation phase, the train, train supplement, and test set will be contiguous in time, apart from any missing data. The current copy, which is just filled approximately the right amount of data from train.csv is provided as a placeholder.<br>
 
 ## Usage: (Not Updated for Time Series yet!)
 1. Use the notebook `notebooks/EDA.ipynb` to explore the dataset and do the required preprocessing
