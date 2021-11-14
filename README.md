@@ -29,9 +29,10 @@ This dataset contains information on historic trades for several cryptoassets, s
 
 As historic cryptocurrency prices are not confidential this will be a forecasting competition using the time series API. Furthermore the public leaderboard targets are publicly available and are provided as part of the competition dataset. Expect to see many people submitting perfect submissions for fun. Accordingly, THE PUBLIC LEADERBOARD FOR THIS COMPETITION IS NOT MEANINGFUL and is only provided as a convenience for anyone who wants to test their code. The final private leaderboard will be determined using real market data gathered after the submission period closes.
 
-Files
+### Files
 `train.csv` - The training set <br>
 
+### Columns
 `timestamp` - A timestamp for the minute covered by the row.<br>
 `Asset_ID` - An ID code for the cryptoasset.<br>
 `Count` - The number of trades that took place this minute.<br>
