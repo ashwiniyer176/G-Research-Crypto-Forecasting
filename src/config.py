@@ -3,4 +3,4 @@ from sklearn.tree import DecisionTreeClassifier
 
 model = DecisionTreeClassifier()
 metric = metrics.accuracy_score
-numberOfFolds = 3
+numberOfFolds = 2
