@@ -53,18 +53,11 @@ As historic cryptocurrency prices are not confidential this will be a forecastin
 
 `supplemental_train.csv` - After the submission period is over this file's data will be replaced with cryptoasset prices from the submission period. In the Evaluation phase, the train, train supplement, and test set will be contiguous in time, apart from any missing data. The current copy, which is just filled approximately the right amount of data from train.csv is provided as a placeholder.<br>
 
-## Usage:
-1. Use the notebook `notebooks/Preprocessing.ipynb` to begin preprocessing
+## Usage: (Not Updated for Time Series yet!)
+1. Use the notebook `notebooks/EDA.ipynb` to explore the dataset and do the required preprocessing
 2. Save the dataset after preprocessing as `final_train.csv`
 3. Use the notebook `notebooks/EDA.ipynb` for Exploratory Data Analysis and shortlisting models
 4. Open `src/config.py`
 5. Select a model (sklearn model instance) and a metric (sklearn metric)
 6. Configure number of folds required
 7. Open Command Prompt and run the `createFoldsAndRun.bat`
-
-
-Note: The objective for doing this is to build a framework which ensures that running most models becomes simple plug and play, enabling a much faster pace of development and experimentation.
-
-<br>
-
-I am using [G-Research Crypto Forecasting Dataset](https://www.kaggle.com/c/g-research-crypto-forecasting)
