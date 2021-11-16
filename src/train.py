@@ -16,28 +16,29 @@ def returnXandY(data, label):
     return X, y
 
 
-def run(fold, model, metric):
+def run(ratio, model, metric):
     """
-    Takes in fold as an argument and runs the Decision Tree Model and prints Accuracy for the model per fold.
+    Takes in ratio as an argument and runs the Decision Tree Model and prints Accuracy for the model per ratio.
     """
-    df = pd.read_csv("data/train_folds.csv")
+    df = pd.read_csv("data/final_train.csv")
+    trainSize = int((1-ratio)*len(df))
+    valSize = int(ratio*len(df))
+    # Setting train data where ratio value != ratio and validation where ratio value==ratio
+    df_train = df.iloc[:trainSize, :]
+    df_valid = df.iloc[trainSize:, :]
+    X_train, y_train = returnXandY(df_train, "Target")
+    X_val, y_val = returnXandY(df_valid, "Target")
 
-    # Setting train data where Fold value != fold and validation where Fold value==fold
-    df_train = df[df['Fold'] != fold].reset_index(drop=True)
-    df_valid = df[df['Fold'] == fold].reset_index(drop=True)
-    X_train, y_train = returnXandY(df_train, "DEATH_EVENT")
-    X_val, y_val = returnXandY(df_valid, "DEATH_EVENT")
-
-    classifier = model
-    classifier.fit(X_train, y_train)
-    preds = classifier.predict(X_val)
+    net = model
+    net.fit(X_train, y_train)
+    preds = net.predict(X_val)
     accuracy = metric(y_val, preds)
-    print(f"Fold={fold}  Accuracy={accuracy}")
-    file = open(f"models/model_fold_{fold}.bin", "wb")
-    joblib.dump(classifier, file)
+    print(f"Ratio={ratio}  Metric={accuracy}")
+    file = open(f"models/model_ratio_{ratio}.bin", "wb")
+    joblib.dump(net, file)
 
 
 if __name__ == "__main__":
     df = pd.read_csv("data/train_folds.csv")
-    for k in df['Fold'].unique():
-        run(fold=k, model=config.model, metric=config.metric)
+    for k in df['ratio'].unique():
+        run(ratio=k, model=config.model, metric=config.metric)
